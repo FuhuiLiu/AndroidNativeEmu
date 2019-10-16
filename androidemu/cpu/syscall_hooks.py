@@ -37,7 +37,8 @@ class SyscallHooks:
         self._syscall_handler.set_handler(0x14, "getpid", 0, self._getpid)
         self._syscall_handler.set_handler(0xe0, "gettid", 0, self._gettid)
         self._syscall_handler.set_handler(0x180,"null1",0, self._null)
-        self._syscall_handler.set_handler(0x180, "getrandom", 3, self._getrandom)
+        # self._syscall_handler.set_handler(0x180, "getrandom", 3, self._getrandom)
+        # comment getrandom to avoid raising unicorn.unicorn.UcError: Invalid memory write (UC_ERR_WRITE_UNMAPPED)
         self._clock_start = time.time()
         self._clock_offset = randint(1000, 2000)
 
